@@ -1,6 +1,22 @@
 
 <?php
 
+class Genre {
+
+    public $nameGenre;
+
+    public function __consturct($nameGenre){
+
+        $this->nameGenre = $nameGenre;
+
+
+    }
+
+    public function getMovieGenres(){
+
+        return $this -> nameGenres;
+    }
+}
 class Movie {
 
     public $title;
@@ -19,25 +35,27 @@ class Movie {
 
         return 'title : ' . $this->title .
             '<br> directort : ' . $this->director .
-            '<br> lenght : ' . $this->length . '<br><br>' .
-            'genres : ' . $this -> GetMovieGenres();
+            '<br> lenght : ' . $this->length  .
+            '<br> genres : ' . $this -> GetMovieGenres() . '<br><br>';
 
     }
 
-    public function GetMovieGenres(){
+    public function getMovieGenres(){
         
         $str = '';
         foreach ( $this -> genre as $genre ) {
 
-            $str .= $genre -> GetMovieGenres() ;
+            $str .= $genre -> getMovieGenres() ;
         }
             return $str;
 
         
     }
 }
+$nameGenre1 = new Genre('drama');
+$nameGenre2 = new Genre('splutter');
 
-$genre1 = ['dramma', 'splutter'];
+$genre1 = [$nameGenre1, $nameGenre2];
 
 $movie1 = new Movie('Arancia meccanica', 'Stanley Kubrick', '138 min', $genre1);
 
